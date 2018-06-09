@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import Router from './router/router'
+import React, { Component } from 'react';
+import Layout from './components/layout/layout.jsx'
+import './style/reset.less'
 
 class App extends Component {
     render() {
         return (
-            <Router></Router>
-        )
+            <Layout></Layout>
+        );
     }
 }
-
 
 export default App;
