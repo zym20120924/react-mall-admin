@@ -6,6 +6,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import Sider from '../sider/sider.jsx'
 import Header from '../header/header.jsx'
+import RouteMap from '../../router/router.jsx'
 import './layout.less'
 
 const { Content } = Layout;
@@ -30,7 +31,7 @@ class LayoutComponent extends React.Component{
                 <Layout>
                     <Header collapsed={this.state.collapsed} toggle={this.toggle}></Header>
                     <Content style={{ margin: '24px 16px', padding: 24, background: '#fff'}}>
-                        Content
+                        <RouteMap></RouteMap>
                     </Content>
                 </Layout>
             </Layout>
