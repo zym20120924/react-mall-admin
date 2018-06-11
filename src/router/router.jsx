@@ -1,18 +1,23 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React,{Component} from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-import Login from '../page/login/login.jsx'
+//引入页面组件
 import Index from '../page/index/index.jsx'
+import ProductIndex from '../page/product-index/product-index'
+import ProductCategory from '../page/product-category/product-category'
+import OrderIndex from '../page/order/order-index.jsx'
+import UserIndex from '../page/user/user-index.jsx'
 
-class RouteMap extends React.Component {
+class RouteMap extends Component {
     render () {
         return (
-            <Router>
-                <Switch>
-                    <Route path='/login' component={Login}></Route>
-                    <Route path='/index' component={Index}></Route>
-                </Switch>
-            </Router>
+            <Switch>
+                <Route path='/index' component={Index}></Route>
+                <Route path='/product-index' component={ProductIndex}></Route>
+                <Route path='/product-category' component={ProductCategory}></Route>
+                <Route path='/order-index' component={OrderIndex}></Route>
+                <Route path='/user-index' component={UserIndex}></Route>
+            </Switch>
         )
     }
 }
