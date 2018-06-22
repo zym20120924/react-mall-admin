@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { requestLogin } from '../../api/api.js'
 import './login.less'
 const FormItem = Form.Item;
@@ -58,9 +58,9 @@ const creatCanvas = () => {
         }
 //鼠标点画圆闪烁变动
         class currentCirle extends Circle {
-            constructor(x, y) {
-                super(x, y)
-            }
+            // constructor(x, y) {
+            //     super(x, y)
+            // }
             drawCircle(ctx) {
                 ctx.beginPath();
                 //注释内容为鼠标焦点的地方圆圈半径变化
@@ -118,25 +118,32 @@ const creatCanvas = () => {
 }
 
 class NormalLoginForm extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     //用户登录
     handleSubmit = (e) =>  {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                let params  = new URLSearchParams();
-                params.append('username', values.userName);
-                params.append('password', values.password);
-                requestLogin(params).then(res => {
-                    let {status,msg,data} = res
+                // let params  = new URLSearchParams();
+                // params.append('username', values.userName);
+                // params.append('password', values.password);
+                let params = {
+                    'username': values.userName,
+                    'password': values.password
+                }
+                let config = {
+                    'contentType': 'application/x-www-form-urlencoded'
+                }
+                requestLogin(params,config).then(res => {
+                    let {status,msg} = res
                     if(status !== 0) {
-                        alert(msg);
+                        message.error(msg);
                         return;
                     }
-                    console.log(data);
+                    this.props.history.push('/index');
                 })
             }
         });

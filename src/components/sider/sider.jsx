@@ -11,6 +11,14 @@ const SubMenu = Menu.SubMenu;
 
 class SiderComponent extends React.Component {
     render () {
+        //logo显示隐藏
+        const logoShow = this.props.collapsed;
+        let logo = null;
+        if(!logoShow) {
+            logo = <Link className="logo" to='/index'><b>HAPPY</b>MMALL</Link>
+        }else {
+            logo = <Link className="logo hide-logo" to='/index'><b>HAPPY</b></Link>
+        }
         return (
             <Sider
                 trigger={null}
@@ -20,10 +28,7 @@ class SiderComponent extends React.Component {
                 className='sider'
             >
                 <div>
-                    <Link className="logo" to='/index'>
-                        <b>HAPPY</b>
-                        MMALL
-                    </Link>
+                    {logo}
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1">
                             <Link to='/index'>
