@@ -127,17 +127,11 @@ class NormalLoginForm extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                // let params  = new URLSearchParams();
-                // params.append('username', values.userName);
-                // params.append('password', values.password);
                 let params = {
                     'username': values.userName,
                     'password': values.password
                 }
-                let config = {
-                    'contentType': 'application/x-www-form-urlencoded'
-                }
-                requestLogin(params,config).then(res => {
+                requestLogin(params).then(res => {
                     let {status,msg} = res
                     if(status !== 0) {
                         message.error(msg);

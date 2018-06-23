@@ -8,11 +8,11 @@ const baseURL = ''
  * config {Object} 配置
  */
 const Request = (method,params = {}, {
-    showWait = true, //是否需要显示等待
+    showWait = false, //是否需要显示等待
     interceptData = true, //是否需要拦截数据，返回对象里如果status !== 200,则拒绝
     errorToast = true, //是否需要提示错误
     timeout = 10000, //超时（毫秒）
-    contentType = 'application/json', //请求头内容类型 默认'application/json'
+    contentType = 'application/x-www-form-urlencoded', //请求头内容类型 默认'application/json'
     type = 'post', //请求类型
     url = baseURL, //请求地址
     waitMessage = "加载中...",
@@ -90,6 +90,31 @@ const Request = (method,params = {}, {
 
 
 //登录
-export const requestLogin = (params,config) => {return Request(`/manage/user/login.do`, params, config)};
+export const requestLogin = params => Request(`/manage/user/login.do`, params);
 
-//
+//统计用户、商品、订单数量
+export const requestBaseCount = params => Request(`/manage/statistic/base_count.do`, params);
+
+//商品类别
+export const requestProductList = params => Request(`/manage/product/list.do`, params);
+
+//品类列表
+export const requestCategoryList = params => Request(`/manage/category/get_category.do`, params);
+
+//添加品类
+export const addCategory = params => Request(`/manage/category/add_category.do`, params);
+
+//修改品类名字
+export const setCategoryName = params => Request(`/manage/category/set_category_name.do`, params);
+
+//订单列表
+export const requestOrderList = params => Request(`/manage/order/list.do`, params);
+
+//按订单编号查询订单列表
+export const queryOrderList = params => Request(`/manage/order/search.do`,params);
+
+//订单详情
+export const requestOrderDetail = params => Request(`/manage/order/detail.do`,params);
+
+//用户列表
+export const requestUserList = params => Request(`/manage/user/list.do`, params);
