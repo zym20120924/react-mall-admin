@@ -98,6 +98,12 @@ export const requestBaseCount = params => Request(`/manage/statistic/base_count.
 //商品类别
 export const requestProductList = params => Request(`/manage/product/list.do`, params);
 
+//商品搜索
+export const searchProductList = params => Request(`/manage/product/search.do`, params);
+
+//商品上下架
+export const setSaleStatus = params => Request(`/manage/product/set_sale_status.do`,params);
+
 //品类列表
 export const requestCategoryList = params => Request(`/manage/category/get_category.do`, params);
 
