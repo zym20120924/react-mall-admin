@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-lz-editor": "^0.12.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4"
   },
@@ -21,14 +22,14 @@
     "react-app-rewire-less": "^2.1.1",
     "react-app-rewired": "^1.5.2"
   },
-  "proxy" : {
-    "/manage" : {
+  "proxy": {
+    "/manage": {
       "target": "http://admintest.happymmall.com",
-      "changeOrigin" : true
+      "changeOrigin": true
     },
-    "/user/logout.do" : {
+    "/user/logout.do": {
       "target": "http://admintest.happymmall.com",
-      "changeOrigin" : true
+      "changeOrigin": true
     }
   }
 }

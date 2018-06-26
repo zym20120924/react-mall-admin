@@ -104,6 +104,9 @@ export const searchProductList = params => Request(`/manage/product/search.do`, 
 //商品上下架
 export const setSaleStatus = params => Request(`/manage/product/set_sale_status.do`,params);
 
+//商品详情
+export const queryProductDetail = params => Request(`/manage/product/detail.do`,params);
+
 //品类列表
 export const requestCategoryList = params => Request(`/manage/category/get_category.do`, params);
 
