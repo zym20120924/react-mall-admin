@@ -11,7 +11,7 @@ const Request = (method,params = {}, {
     showWait = false, //是否需要显示等待
     interceptData = true, //是否需要拦截数据，返回对象里如果status !== 200,则拒绝
     errorToast = true, //是否需要提示错误
-    timeout = 10000, //超时（毫秒）
+    timeout = 10*1000, //超时（毫秒）
     contentType = 'application/x-www-form-urlencoded', //请求头内容类型 默认'application/json'
     type = 'post', //请求类型
     url = baseURL, //请求地址
@@ -20,7 +20,7 @@ const Request = (method,params = {}, {
     // 创建axios实例
     const AxiosRequest = axios.create({
         baseURL: url,
-        timeout: 10 * 1000,
+        timeout: timeout,
     })
     // 初始化默认post header
     axios.defaults.headers.post['Content-Type'] = contentType;
@@ -59,7 +59,6 @@ const Request = (method,params = {}, {
             }
         }
         return Promise.resolve(result);
-
     };
 
     //失败回调
@@ -79,9 +78,7 @@ const Request = (method,params = {}, {
     }
 
     if("get" === type.toLowerCase()) {
-        return AxiosRequest.get(method, {
-            params: params
-        }).then(success).catch(fail);
+        return AxiosRequest.get(method, { params: params }).then(success).catch(fail);
     } else {
         return AxiosRequest.post(method, params).then(success).catch(fail);
     }
@@ -107,11 +104,11 @@ export const setSaleStatus = params => Request(`/manage/product/set_sale_status.
 //商品详情
 export const queryProductDetail = params => Request(`/manage/product/detail.do`,params);
 
-//品类列表
+//获取品类
 export const requestCategoryList = params => Request(`/manage/category/get_category.do`, params);
 
 //添加品类
-export const addCategory = params => Request(`/manage/category/add_category.do`, params);
+export const requestAddCategory = params => Request(`/manage/category/add_category.do`, params);
 
 //修改品类名字
 export const setCategoryName = params => Request(`/manage/category/set_category_name.do`, params);

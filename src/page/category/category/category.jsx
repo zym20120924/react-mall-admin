@@ -1,7 +1,8 @@
 import React,{Component} from 'react'
-import {Table, Input, InputNumber, Popconfirm, Form,message,Button} from 'antd'
-import { requestCategoryList, addCategory, setCategoryName,  } from '../../api/api.js'
-import './product-category.less'
+import {Link} from 'react-router-dom'
+import {Table, message, Button} from 'antd'
+import { requestCategoryList, addCategory, setCategoryName,  } from '../../../api/api.js'
+import './category.less'
 
 class ProductCategory extends Component {
     constructor(props) {
@@ -19,15 +20,20 @@ class ProductCategory extends Component {
                 return (
                     <p className='operating'>
                         <a>修改名称</a>
-                        <a onClick={() => this.queryChildren(record['id'])}>查看子品类</a>
+                        {
+                            record.parentId === 0
+                            // ? <a onClick={() => this.queryChildren(record['id'])}>查看子品类</a>
+                            ? <Link to={`category-index/${record.id}`}>查看子品类</Link>
+                            : null
+                        }
                     </p>
-
                 )
             }
         }];
 
         this.state = {
-            dataList: [],
+            dataList: [], //品类列表数据
+            parentCategoryId: '',
             loading: false,
         }
     }
@@ -52,7 +58,25 @@ class ProductCategory extends Component {
                 loading: false,
                 dataList: data,
             })
+            let categoryId = params.categoryId;
+            if(categoryId !== 0) {
+                this.setState({parentCategoryId:categoryId})
+                this.props.history.push(`category-index/${categoryId}`);
+            } else {
+                this.setState({parentCategoryId:''})
+            }
+        }).catch(error => {
+            console.log(error);
+            this.setState({
+                loading: false,
+                dataList: [],
+            })
         })
+    }
+
+    //跳转添加品类页面
+    goAddCategory = () => {
+        this.props.history.push('/add-category');
     }
 
     componentDidMount() {
@@ -66,8 +90,8 @@ class ProductCategory extends Component {
         return (
             <article className='product-category'>
                 <div className="top">
-                    <p>父品类ID: </p>
-                    <Button type="primary" icon="plus">添加品类</Button>
+                    <p>父品类ID: {this.state.parentCategoryId}</p>
+                    <Button type="primary" icon="plus" onClick={this.goAddCategory}>添加品类</Button>
                 </div>
                 <Table
                     columns={this.columns} rowKey='id'

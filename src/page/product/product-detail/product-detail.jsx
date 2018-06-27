@@ -28,8 +28,6 @@ class ProductDetail extends Component {
             this.setState({
                 detailData: data
             })
-
-            console.log(this.state.detailData);
         })
     }
 

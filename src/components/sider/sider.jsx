@@ -65,8 +65,8 @@ class SiderComponent extends React.Component {
                                     <span>商铺管理</span>
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item key="/product-category">
-                                <Link to='/product-category'>
+                            <Menu.Item key="/category-index">
+                                <Link to='/category-index'>
                                     <span>品类管理</span>
                                 </Link>
                             </Menu.Item>
