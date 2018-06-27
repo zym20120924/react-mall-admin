@@ -16,7 +16,7 @@ class RouteMap extends Component {
     render () {
         return (
             <Switch>
-                <Route path='/index' component={Home}></Route>
+                <Route path='/index' breadcrumbName='首页' component={Home}></Route>
                 <Route path='/product-index' component={ProductIndex}></Route>
                 <Route path='/add-product' component={AddProduct}></Route>
                 <Route path='/product-detail' component={ProductDetail}></Route>

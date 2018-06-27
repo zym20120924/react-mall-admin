@@ -4,17 +4,13 @@ import Login from './page/login/login.jsx'
 import Layout from './components/layout/layout.jsx'
 import './style/reset.less'
 
-const LayoutRouter = (
-    <Layout></Layout>
-)
-
 class App extends Component {
     render() {
         return (
             <Router>
                 <Switch>
-                    <Route path='/login' component={Login}></Route>
-                    <Route path="/" render={ props => LayoutRouter}/>
+                    <Route  path='/login' component={Login}></Route>
+                    <Route path="/" component={Layout}></Route>
                 </Switch>
             </Router>
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Row, Col, Input, Select, InputNumber, Button } from 'antd';
+import { Row, Col, Input, Select, Button } from 'antd';
 import RichEditor from '../../../components/rich-editor/rich-editor'
 import './add-product.less'
 

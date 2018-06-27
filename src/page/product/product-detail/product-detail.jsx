@@ -9,6 +9,8 @@ class ProductDetail extends Component {
         super(props);
         this.state = {
             detailData: {},
+            categoryId: 0,
+            parentCategoryId: 0,
         }
     }
 
@@ -23,7 +25,7 @@ class ProductDetail extends Component {
                 message.error(msg);
                 return;
             }
-            let subImages = data['subImages'].split(',');
+            let subImages = data['subImages']?data['subImages'].split(','):[];
             data['subImages'] = subImages.map((imgUrl) => `${data['imageHost']}${imgUrl}`)
             this.setState({
                 detailData: data
@@ -49,7 +51,10 @@ class ProductDetail extends Component {
                 <Row>
                     <Col span={5}><p className='label'>所属分类</p></Col>
                     <Col span={10}>
-                        <CategorySelector></CategorySelector>
+                        <CategorySelector
+                            readOnly
+                            categoryId={this.state.categoryId}
+                            parentCategoryId={this.state.parentCategoryId}/>
                     </Col>
                 </Row>
                 <Row>
