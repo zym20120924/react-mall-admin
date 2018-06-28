@@ -106,13 +106,14 @@ class ProductCategory extends Component {
         ];
     }
 
-    //跳转添加品类页面
-    goAddCategory = () => {
-        this.props.history.push('/add-category');
-    }
     //查看子类
     queryChildren = (id) => {
         this.props.history.push(`/category-index/${id}`);
+    }
+
+    //跳转添加品类页面
+    goAddCategory = () => {
+        this.props.history.push('/category-index/add-category');
     }
 
     //加载品类列表
@@ -140,11 +141,6 @@ class ProductCategory extends Component {
                 dataList: [],
             })
         })
-    }
-
-    //跳转添加品类页面
-    goAddCategory = () => {
-        this.props.history.push('/add-category');
     }
 
     isEditing = (record) => {

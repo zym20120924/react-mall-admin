@@ -118,9 +118,6 @@ const creatCanvas = () => {
 }
 
 class NormalLoginForm extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
 
     //用户登录
     handleSubmit = (e) =>  {
@@ -137,6 +134,8 @@ class NormalLoginForm extends Component {
                         message.error(msg);
                         return;
                     }
+                    //反馈登录成功
+                    this.props.onLongin(true);
                     this.props.history.push('/index');
                 })
             }

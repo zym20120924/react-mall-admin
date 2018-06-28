@@ -9,10 +9,12 @@ class RichEditor extends Component {
         super(props);
         this.state = {
             responseList: [],
+            content: this.props.detailContent,
         }
     }
+    //富文本编辑框改变
     receiveHtml = (content) => {
-        this.setState({responseList:[]});
+        this.props.onChange(content) //回调函数传递参数给父组件
     }
     render() {
         const uploadProps = {

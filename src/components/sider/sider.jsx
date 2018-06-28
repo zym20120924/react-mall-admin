@@ -14,7 +14,6 @@ class SiderComponent extends React.Component {
     rootSubmenuKeys = ['sub1', 'sub2', 'sub3', 'sub4'];
     state = {
         openKeys: ['sub1', 'sub2', 'sub3', 'sub4'],
-        // selectedKey: this.props.location.pathname
     };
     onOpenChange = (openKeys) => {
         const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
@@ -60,10 +59,10 @@ class SiderComponent extends React.Component {
                                 <span>首页</span>
                             </Link>
                         </Menu.Item>
-                        <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>商铺</span></span>}>
+                        <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>商品</span></span>}>
                             <Menu.Item key="/product-index">
                                 <Link to='/product-index'>
-                                    <span>商铺管理</span>
+                                    <span>商品管理</span>
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="/category-index">

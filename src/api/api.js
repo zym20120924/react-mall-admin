@@ -104,6 +104,9 @@ export const setSaleStatus = params => Request(`/manage/product/set_sale_status.
 //商品详情
 export const queryProductDetail = params => Request(`/manage/product/detail.do`,params);
 
+//添加商品
+export const addProduct = params => Request(`/manage/product/save.do`,params);
+
 //获取品类
 export const requestCategoryList = params => Request(`/manage/category/get_category.do`, params);
 

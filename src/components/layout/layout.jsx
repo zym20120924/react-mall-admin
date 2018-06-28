@@ -14,9 +14,13 @@ const { Content } = Layout;
 
 const breadcrumbNameMap = {
     '/index': '首页',
-    '/product-index': '商铺管理',
+    '/product-index': '商品管理',
+    '/product-detail': '添加商品',
+    '/add-product': '添加商品',
     '/category-index': '品类管理',
+    '/add-category': '添加品类',
     '/order-index': '订单管理',
+    '/order-detail': '订单详情',
     '/user-index': '用户管理',
 };
 
@@ -35,10 +39,6 @@ class LayoutComponent extends React.Component{
         });
     }
 
-    // componentWillReceiveProps () {
-    //     console.log(this.props)
-    // }
-
     render() {
         const location = this.props.location;
         const pathSnippets = location.pathname.split('/').filter(i => i);
@@ -52,11 +52,6 @@ class LayoutComponent extends React.Component{
                 </Breadcrumb.Item>
             );
         });
-        // const breadcrumbItems = [(
-        //     <Breadcrumb.Item key="home">
-        //         <Link to="/">Home</Link>
-        //     </Breadcrumb.Item>
-        // )].concat(extraBreadcrumbItems);
         const breadcrumbItems = extraBreadcrumbItems;
         return (
             <Layout className='layout'>

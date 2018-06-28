@@ -16,12 +16,12 @@ class RouteMap extends Component {
     render () {
         return (
             <Switch>
-                <Route path='/index' breadcrumbName='首页' component={Home}></Route>
+                <Route path='/index' component={Home}></Route>
                 <Route path='/product-index' component={ProductIndex}></Route>
                 <Route path='/add-product' component={AddProduct}></Route>
                 <Route path='/product-detail' component={ProductDetail}></Route>
                 <Route path='/category-index/:categoryId?' component={Category}></Route>
-                <Route path='/add-category' component={AddCategory}></Route>
+                <Route path='/category-index/add-category' component={AddCategory}></Route>
                 <Route path='/order-index' component={OrderIndex}></Route>
                 <Route path='/order-detail' component={OrderDetail}></Route>
                 <Route path='/user-index' component={UserIndex}></Route>

@@ -35,7 +35,7 @@ class ProductIndex extends Component {
                 return (
                     <p className='operating'>
                         <a onClick={() => {this.goProductDetail(record.id)}}>详情</a>
-                        <a>编辑</a>
+                        <a onClick={() => {this.goProductEdit(record.id)}}>编辑</a>
                     </p>
 
                 )
@@ -185,6 +185,15 @@ class ProductIndex extends Component {
     goProductDetail = (id) => {
         this.props.history.push({
             pathname: '/product-detail',
+            state: {
+                productId: id,
+            }
+        })
+    }
+    //跳转编辑商品
+    goProductEdit = (id) => {
+        this.props.history.push({
+            pathname: '/add-product',
             state: {
                 productId: id,
             }
